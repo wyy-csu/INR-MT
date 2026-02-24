@@ -3,35 +3,6 @@ import numpy as np
 import sys
 import atexit
 
-def kronecker(A, B, shape_A, shape_B, device):
-    a_rows, a_cols = A.indices()
-    a_values = A.values()
-    b_rows, b_cols = B.indices()
-    b_values = B.values()
-
-    rows = (a_rows.unsqueeze(1) * shape_B[0] + b_rows.unsqueeze(0)).flatten()
-    cols = (a_cols.unsqueeze(1) * shape_B[1] + b_cols.unsqueeze(0)).flatten()
-    values = (a_values.unsqueeze(1) * b_values.unsqueeze(0)).flatten()
-
-    return torch.sparse_coo_tensor(
-        torch.stack([rows, cols]),
-        values,
-        (shape_A[0] * shape_B[0], shape_A[1] * shape_B[1]),
-        device=device
-    )
-
-
-def construct_sparse_matrix(n, diag, off_diag, device):
-    i = torch.arange(1, n - 1, device=device)
-    rows = torch.cat([i, i, i])
-    cols = torch.cat([i - 1, i, i + 1])
-    values = torch.cat([
-        torch.full_like(i, off_diag, dtype=torch.float64),
-        torch.full_like(i, diag, dtype=torch.float64),
-        torch.full_like(i, off_diag, dtype=torch.float64)
-    ])
-    return torch.sparse_coo_tensor(torch.stack([rows, cols]), values, (n, n))
-
 
 def SigPad(input_tensor, size_b, nza, device, mode='edge', background=2.5):
     """
