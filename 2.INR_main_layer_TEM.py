@@ -33,7 +33,7 @@ pretrain_option = True
 mode = 'TETM'  ## 'TETM', 'TE' or 'TM'
 noise = 'low'  ### 'low' or 'medium'
 m_name = 'layer'
-model_name = f'{m_name}-noisy-{noise}-seed{seed_num}-10'
+model_name = f'{m_name}-noisy-{noise}'
 
 """ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% """
 """                                              Create all folders                                                        """
