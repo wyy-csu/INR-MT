@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib
-matplotlib.use('Agg') # 在 import pyplot 之前调用
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 import torch
@@ -31,7 +31,7 @@ def plot_Apres_phase_record(res_true, res_pred, phase_true, phase_pred, path, ep
     axes[0, 0].set_title('Apres_true', fontsize=12)
     # axes[0, 0].set_xticks(x_ticks)
     # axes[0, 0].set_yticks(y_ticks)
-    fig.colorbar(im00, ax=axes[0, 0])  # 添加色标
+    fig.colorbar(im00, ax=axes[0, 0]) 
 
     im01 = axes[0, 1].imshow(res_pred.cpu().detach().numpy(), aspect='auto',
                              vmin=res_true.min(),
@@ -40,13 +40,13 @@ def plot_Apres_phase_record(res_true, res_pred, phase_true, phase_pred, path, ep
     axes[0, 1].set_title('Apres_pred', fontsize=12)
     axes[0, 1].set_xticks(x_ticks)
     axes[0, 1].set_yticks(y_ticks)
-    fig.colorbar(im01, ax=axes[0, 1])  # 添加色标
+    fig.colorbar(im01, ax=axes[0, 1]) 
 
     im02 = axes[0, 2].imshow(Apres_misfit.cpu().detach().numpy(), aspect='auto', cmap='jet')
     axes[0, 2].set_title('Apres_misfit', fontsize=12)
     # axes[0, 2].set_xticks(x_ticks)
     # axes[0, 2].set_yticks(y_ticks)
-    fig.colorbar(im02, ax=axes[0, 2])  # 添加色标
+    fig.colorbar(im02, ax=axes[0, 2]) 
 
 
 
@@ -57,7 +57,7 @@ def plot_Apres_phase_record(res_true, res_pred, phase_true, phase_pred, path, ep
     axes[1, 0].set_title('Phase_true', fontsize=12)
     # axes[1, 0].set_xticks(x_ticks)
     # axes[1, 0].set_yticks(y_ticks)
-    fig.colorbar(im10, ax=axes[1, 0])  # 添加色标
+    fig.colorbar(im10, ax=axes[1, 0])
 
     im11 = axes[1, 1].imshow(phase_pred.cpu().detach().numpy(), aspect='auto',
                              vmin=phase_true.min(),
@@ -66,12 +66,12 @@ def plot_Apres_phase_record(res_true, res_pred, phase_true, phase_pred, path, ep
     axes[1, 1].set_title('Phase_pred', fontsize=12)
     # axes[1, 1].set_xticks(x_ticks)
     # axes[1, 1].set_yticks(y_ticks)
-    fig.colorbar(im11, ax=axes[1, 1])  # 添加色标
+    fig.colorbar(im11, ax=axes[1, 1]) 
     im12 = axes[1, 2].imshow(phase_misfit.cpu().detach().numpy(), aspect='auto', cmap='jet')
     axes[1, 2].set_title('Phase_misfit', fontsize=12)
     # axes[1, 2].set_xticks(x_ticks)
     # axes[1, 2].set_yticks(y_ticks)
-    fig.colorbar(im12, ax=axes[1, 2])  # 添加色标
+    fig.colorbar(im12, ax=axes[1, 2])
 
     plt.tight_layout()
     # plt.show()
@@ -130,26 +130,26 @@ def plot_Apres_phase_1D_TEM(res_true_TE, res_pred_TE, phase_true_TE, phase_pred_
     plt.subplot(2, 1, 1)
 
     plt.errorbar(
-        x_ticks,        # X轴位置
-        res_true_TE[:, x],        # Y轴中心点
-        yerr=res_err_TE[:, x], # 垂直误差值
-        fmt='o',      # 数据点的格式：'o' 代表圆点，也可以用 's' (方块), '^' (三角形) 等
-        capsize=5,    # 误差棒两端横线的长度 (cap)
-        color='red', # 线的颜色
-        ecolor='black', # 误差棒的颜色 (如果想和数据点区分)
-        elinewidth=1.5, # 误差棒线的宽度
+        x_ticks,        
+        res_true_TE[:, x],     
+        yerr=res_err_TE[:, x], 
+        fmt='o',   
+        capsize=5,    
+        color='red',
+        ecolor='black',
+        elinewidth=1.5,
         label='real-TE'
     )
 
     plt.errorbar(
-        x_ticks,        # X轴位置
-        res_true_TM[:, x],        # Y轴中心点
-        yerr=res_err_TM[:, x], # 垂直误差值
-        fmt='s',      # 数据点的格式：'o' 代表圆点，也可以用 's' (方块), '^' (三角形) 等
-        capsize=5,    # 误差棒两端横线的长度 (cap)
-        color='blue', # 线的颜色
-        ecolor='black', # 误差棒的颜色 (如果想和数据点区分)
-        elinewidth=1.5, # 误差棒线的宽度
+        x_ticks,       
+        res_true_TM[:, x],        
+        yerr=res_err_TM[:, x], 
+        fmt='s',      
+        capsize=5,   
+        color='blue', 
+        ecolor='black',
+        elinewidth=1.5,
         label='real-TM'
     )
 
@@ -169,26 +169,26 @@ def plot_Apres_phase_1D_TEM(res_true_TE, res_pred_TE, phase_true_TE, phase_pred_
     plt.subplot(2, 1, 2)
 
     plt.errorbar(
-        x_ticks,  # X轴位置
-        phase_true_TE[:, x],  # Y轴中心点
-        yerr=phse_err_TE[:, x],  # 垂直误差值
-        fmt='o',  # 数据点的格式：'o' 代表圆点，也可以用 's' (方块), '^' (三角形) 等
-        capsize=5,  # 误差棒两端横线的长度 (cap)
-        color='red',  # 线的颜色
-        ecolor='black',  # 误差棒的颜色 (如果想和数据点区分)
-        elinewidth=1.5,  # 误差棒线的宽度
+        x_ticks, 
+        phase_true_TE[:, x],  
+        yerr=phse_err_TE[:, x],  
+        fmt='o', 
+        capsize=5,  
+        color='red',  
+        ecolor='black',  
+        elinewidth=1.5, 
         label='real-TE'
     )
 
     plt.errorbar(
-        x_ticks,  # X轴位置
-        phase_true_TM[:, x],  # Y轴中心点
-        yerr=phase_err_TM[:, x],  # 垂直误差值
-        fmt='s',  # 数据点的格式：'o' 代表圆点，也可以用 's' (方块), '^' (三角形) 等
-        capsize=5,  # 误差棒两端横线的长度 (cap)
-        color='blue',  # 线的颜色
-        ecolor='black',  # 误差棒的颜色 (如果想和数据点区分)
-        elinewidth=1.5,  # 误差棒线的宽度
+        x_ticks, 
+        phase_true_TM[:, x],  
+        yerr=phase_err_TM[:, x], 
+        fmt='s',  
+        capsize=5,  
+        color='blue', 
+        ecolor='black',  
+        elinewidth=1.5,  
         label='real-TM'
     )
 
