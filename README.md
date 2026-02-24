@@ -17,7 +17,7 @@ A PyTorch-based utility for efficiently solving sparse linear systems on CPU or 
 
 ###### Utilities ######
 ·utils.py
-Utility functions for mesh generation and model extension.
+Utility functions for mesh generationm, model extension and noise.
 
 ·plot_functions2.py
 Functions for plotting MT responses and inversion results.
