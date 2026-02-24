@@ -137,38 +137,6 @@ def SigCor(input_model, dz_k, dx_k, nza, size_b, multiple_t, multiple_b, multipl
 
     return  zn, yn, zn0, yn0, ry
 
-def SigCor_skin(input_model, dz_k, dx_k, nza, size_b, multiple_t, multiple_b, multiple_l, multiple_r):
-    len_z_k, len_y_k = np.shape(input_model)
-    z = len_z_k * dz_k
-
-
-    # z_air = -(np.logspace(np.log10(50e3), np.log10(50e3 + multiple_t * z), nza + 1) - 50e3)[::-1]
-    #
-    zn0 = np.arange(0, len_z_k + 1) * dz_k
-
-    zn0 = np.unique(np.concatenate((zn0, [30])))
-
-    z_air = np.zeros((nza,))
-    z_air[0] = -zn0[1]
-    for i in range(0, len(z_air)-1):
-        z_air[i+1] = 3 * z_air[i]
-    z_air = z_air[::-1]
-
-
-    z_b = np.logspace(np.log10(zn0[-1]), np.log10(multiple_b * zn0[-1]), size_b + 1)
-
-    zn = np.concatenate((z_air[:-1], zn0, z_b[1:]))
-
-    yn0 = np.arange(-len_y_k / 2, len_y_k / 2 + 1) * dx_k
-
-    # expand non kernel domain
-    y_l = -(np.logspace(np.log10(multiple_l * yn0[-1]), np.log10(yn0[-1]), size_b + 1))
-    y_r = np.logspace(np.log10(yn0[-1]), np.log10(multiple_r * yn0[-1]), size_b + 1)
-    yn = np.concatenate((y_l[:-1], yn0, y_r[1:]))
-
-    ry = yn0
-
-    return  zn, yn, zn0, yn0, ry
 
 def add_noise2data(rho_clean, phs_clean, noise_level='low'):
 
