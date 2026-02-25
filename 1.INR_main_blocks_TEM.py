@@ -57,8 +57,8 @@ initial_image_filename = f'Initial_model'
 initial_directory = os.path.join(floder_pic, initial_image_filename)
 os.makedirs(initial_directory, exist_ok=True)
 
-loss_lr_image_filename = f'loss&lr'
-loss_lr_directory = os.path.join(floder_pic, loss_lr_image_filename)
+loss_image_filename = f'loss'
+loss_directory = os.path.join(floder_pic, loss_lr_image_filename)
 os.makedirs(loss_lr_directory, exist_ok=True)
 
 floder = f'./paper_model_{model_name}/{mode}/Data_Only/'
@@ -475,7 +475,7 @@ for epoch in range(n_epochs):
 
 
 """ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% """
-"""                                          Plot Loss curves and save                                                     """
+"""                                          Plot Loss curves and save lr                                                  """
 """ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% """
 
 total_loss_values = np.array(total_loss).flatten()
@@ -506,23 +506,6 @@ sio.savemat(loss_path, mdict={'Total_loss': total_loss_values,
                               'Apres_TM_loss': Apres_TM_loss_values,
                               'Phase_TM_loss': Phase_TM_loss_values
                               })
-""" %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% """
-"""                                          Plot Lr curves and save                                                       """
-""" %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% """
-
-plt.figure(figsize=(10, 5))
-plt.plot(np.array(lr_record), label='lr', linewidth=2)
-os.makedirs(loss_lr_directory, exist_ok=True)
-lr_path = os.path.join(loss_lr_directory, f'lr_{n_epochs}.png')
-plt.xlabel('Epochs', fontsize=20)
-plt.xticks(fontsize=15)
-plt.ylabel('Lr', fontsize=20)
-plt.yticks(fontsize=15)
-plt.yscale('log')
-plt.legend(loc='upper right', fontsize=14)
-plt.grid(True)
-plt.savefig(lr_path)
-plt.close()
 
 lr_path = os.path.join(data_path_directory, 'lr.txt')
 np.savetxt(lr_path, lr_record)
