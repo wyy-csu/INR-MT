@@ -16,7 +16,7 @@ import scipy.io as sio
 import sys
 # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 device = torch.device("cpu")
-seed_num = 100
+seed_num = 10
 
 torch.manual_seed(seed_num)
 torch.cuda.manual_seed_all(seed_num)
