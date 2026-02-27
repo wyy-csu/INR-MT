@@ -1,5 +1,5 @@
 # INR-MT
-Codes for paper "Implicit Neural Representation for 2D Magnetotelluric Inversion: A Physics-Constrained Deep Learning Approach"
+Codes for paper "Implicit Neural Representation for 2D Magnetotelluric Inversion: A Physics-Constrained Deep Learning Approach", which has been submitted to Computers & Geosciences.
 
 ###### Main Scripts ######
 ·1.INR_main_blocks_TEM.py   # Run for two blocks model inversion
@@ -26,3 +26,8 @@ Functions for plotting MT responses and inversion results.
 ·predict.py
 Load a trained neural network model and predict the final inversion results.
 
+###### Data ######
+The datasets utilized are available for download at the following links:
+
+Wang, Y., Gracia, X., Attias, E., Zhang, B., Xiong, F., Liu, J., Guo, Z., 2026a. Blocks model example dataset for paper "Implicit Neural Representation for 2D Magnetotelluric Inversion: A Physics-Constrained Deep Learning Approach" [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18480852.
+Wang, Y., Garcia, X., Attias, E., Zhang, B., Xiong, F., Liu, J., Guo, Z., 2026b. Layered model example dataset for paper "Implicit Neural Representation for 2D Magnetotelluric Inversion: A Physics-Constrained Deep Learning Approach" [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18497702.
