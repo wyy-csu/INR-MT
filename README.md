@@ -160,7 +160,7 @@ By default, the scripts use:
 - Adam optimizer with initial learning rate `1e-3`
 - early stopping based on loss behavior
 
-These settings can be changed near the beginning of each main script.
+These settings can be changed based on the inversion tasks.
 
 ## Output Files
 
