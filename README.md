@@ -242,18 +242,6 @@ The full inversion workflow released here consists of:
 
 Thus, the repository includes the main code needed to reproduce the differentiable physics-constrained inversion examples in the manuscript.
 
-## Troubleshooting
-
-- If the scripts cannot find input files, check that the downloaded Zenodo data are placed under `data/blocks/` and `data/layer/` exactly as shown above.
-- If CUDA is unavailable, keep `device = torch.device("cpu")`.
-- If memory is limited, run one example at a time and reduce the number of epochs for a quick smoke test.
-- If using the two-block script and an output-folder variable error occurs around the loss directory, define the loss folder consistently with the layered script, for example:
-
-```python
-loss_lr_image_filename = "loss&lr"
-loss_lr_directory = os.path.join(floder_pic, loss_lr_image_filename)
-os.makedirs(loss_lr_directory, exist_ok=True)
-```
 
 ## Citation
 
